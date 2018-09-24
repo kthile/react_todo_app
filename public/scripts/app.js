@@ -1,40 +1,88 @@
 "use strict";
 
-var square = function square(x) {
-  return x * x;
+//uncompiled by babel
+console.log("app.js is running");
+var appRoot = document.getElementById("app");
+
+var app = {
+  title: "Indecision App",
+  subTitle: "Let the app decide for you",
+  options: []
 };
-console.log("normal function: " + square(2));
-
-//arrow version
-var squareArrow = function squareArrow(x) {
-  return x * x;
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault(); //prevents full page refresh
+  var option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = " "; // sets textfield to empty
+    renderTemplate();
+  }
 };
-console.log("arrow function: " + squareArrow(2));
-
-var squareArrow2 = function squareArrow2(x) {
-  return x * x;
+var onReset = function onReset() {
+  app.options = [];
+  renderTemplate();
 };
-console.log("arrow functionv2: " + squareArrow2(2));
 
-//firstname = fullName.split(' ')[0];
-/*arrow function format: 
-const variableName = (argument) => 
-*/
-
-var fullName = "Mike Smith";
-console.log(fullName);
-
-var getFirst = function getFirst(name) {
-  return name.split(' ')[0];
+var renderTemplate = function renderTemplate() {
+  var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      app.title
+    ),
+    app.subTitle && React.createElement(
+      "p",
+      null,
+      "Subtitle: ",
+      app.subTitle
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length > 0 ? "Here are your options" : "No Options"
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length
+    ),
+    React.createElement(
+      "button",
+      { onClick: onReset },
+      "Remove All"
+    ),
+    React.createElement(
+      "ul",
+      null,
+      React.createElement(
+        "li",
+        null,
+        "test"
+      ),
+      React.createElement(
+        "li",
+        null,
+        "test"
+      ),
+      React.createElement(
+        "li",
+        null,
+        "test"
+      )
+    ),
+    React.createElement(
+      "form",
+      { onSubmit: onFormSubmit },
+      React.createElement("input", { type: "text", name: "option" }),
+      React.createElement(
+        "button",
+        null,
+        "Add Option"
+      )
+    )
+  );
+  ReactDOM.render(template, appRoot); //what are we rendering? where are we rendering?
 };
-console.log(getFirst(fullName));
-
-var getFirstv2 = function getFirstv2(name) {
-  return name.split(' ')[0];
-};
-console.log(getFirstv2(fullName));
-
-var printName = function printName(myName) {
-  return myName;
-};
-console.log(printName('Bobbie'));
+renderTemplate();

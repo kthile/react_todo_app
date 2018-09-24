@@ -11,6 +11,7 @@
   "scripts": {
     "babel-start": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "babel-start-playground-let": "babel src/playground/es6-let-const.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "babel-start-playground-arrow": "babel src/playground/es6-arrow-function.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "babel-start-playground-arrow": "babel src/playground/es6-arrow-function.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "babel-start-playground-arrow2": "babel src/playground/es6-arrow-function-2.js --out-file=public/scripts/app.js --presets=env,react --watch"
   }
 }

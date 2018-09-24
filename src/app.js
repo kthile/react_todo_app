@@ -1,49 +1,45 @@
 //uncompiled by babel
 console.log("app.js is running");
+const appRoot = document.getElementById("app");
 
 let app = {
   title: "Indecision App",
   subTitle: "Let the app decide for you",
-  options: ["Option One", "Option Two"]
+  options: []
 };
-
-const template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subTitle && <p>Subtitle: {app.subTitle}</p>}
-    <p>{app.options.length > 0 ? "Here are your options" : "No Options"}</p>
-    <ul>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-    </ul>
-  </div>
-);
-
-let user = {
-  name: "Andrew",
-  age: "26",
-  location: "New York"
-};
-
-function getLocation(location) {
-  if (location) {
-    return <p>Location: {location}</p>;
-  } else {
-    return undefined;
+const onFormSubmit = e => {
+  e.preventDefault(); //prevents full page refresh
+  const option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = " "; // sets textfield to empty
+    renderTemplate();
   }
-}
+};
+const onReset = () => {
+  app.options = [];
+  renderTemplate();
+};
 
-const templateTwo = (
-  <div>
-    <h1>{user.name ? user.name : "No name"}</h1>
-    {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
-  </div>
-);
-
-const appRoot = document.getElementById("app");
-
-//render(JSX, Element)
-ReactDOM.render(template, appRoot);
-//ReactDOM.render(templateTwo, appRoot);
+const renderTemplate = () => {
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subTitle && <p>Subtitle: {app.subTitle}</p>}
+      <p>{app.options.length > 0 ? "Here are your options" : "No Options"}</p>
+      <p>{app.options.length}</p>
+      <button onClick={onReset}>Remove All</button>
+      <ul>
+        <li>test</li>
+        <li>test</li>
+        <li>test</li>
+      </ul>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
+    </div>
+  );
+  ReactDOM.render(template, appRoot); //what are we rendering? where are we rendering?
+};
+renderTemplate();
