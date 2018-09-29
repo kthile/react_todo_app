@@ -6,6 +6,20 @@ module.exports = {
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        //run babel to run everytime it sees a .js file
+        loader: "babel-loader",
+        test: /\.js$/, //checks if files end with .js,
+        exclude: /node_modules/ //don't mess with node_modules folder
+      }
+    ]
+  },
+  devtool: "cheap-module-eval-source-map", //maps errors to the source instead of bundle.js
+  devServer: {
+    contentBase: path.join(__dirname, "public")
   }
 };
 

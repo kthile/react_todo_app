@@ -1,6 +1,11 @@
-//import "./utils.js";
-import { square, add } from './utils.js'
+import React from "react";
+import ReactDOM from "react-dom";
+import IndecisionApp from "./components/IndecisionApp.js";
 
-console.log("app.js is running");
-console.log(square(4));
-console.log(add(3,3))
+/*stateless funcitonal component
+  advantages: faster than class-based, best used for simple presentation
+  class-based component
+  advantages: access to the state, better for complex tasks */
+
+ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
+
