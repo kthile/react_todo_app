@@ -1,0 +1,9 @@
+.container {
+  /* display: flex;
+  flex-flow: column wrap;
+  margin-left: 50%;
+  transform: translate(-50%);*/
+  margin: 0 auto;
+  padding: $s-size;
+  max-width: 60rem;
+}

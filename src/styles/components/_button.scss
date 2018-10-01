@@ -1,0 +1,56 @@
+.big-button {
+  background-color: $purple;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 0.6rem solid darken($purple, 10%);
+  font-weight: 800;
+  font-size: $l-size;
+  color: $white;
+  margin-bottom: $m-size;
+  padding: 3rem;
+  letter-spacing: 2px;
+  &:hover {
+    background-color: lighten($purple, 5%);
+    transition: 200ms;
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .big-button {
+    margin-bottom: $xl-size;
+    &:hover {
+      transform: scale(1.1);
+      transition: 300ms;
+    }
+  }
+}
+
+.big-button:disabled {
+  opacity: 0.5;
+}
+.button {
+  background-color: $purple;
+  border: none;
+  border-bottom: 0.3rem solid darken($purple, 10%);
+  color: $white;
+  font-weight: 500;
+  padding: $s-size;
+  margin-bottom: $s-size;
+  &:hover {
+    background-color: lighten($purple, 5%);
+    transition: 200ms;
+  }
+}
+
+.button--link {
+  background: none;
+  border: none;
+  color: $light-purple;
+  padding: 0;
+  &:hover {
+    color: darken($light-purple, 20%);
+    transition-duration: 400ms;
+    background: none;
+  }
+}

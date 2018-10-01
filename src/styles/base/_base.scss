@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /*16 * .625 = 10, base 10 system. therefore, 2.2 rem = 22px*/
+}
+body {
+  font-family: "Poppins", "Helvetica", "Arial", "sans-serif";
+  font-size: $m-size;
+  background: $dark-blue;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
